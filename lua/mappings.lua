@@ -1,47 +1,26 @@
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- Exit insert mode with 'jk'
+vim.keymap.set('i', 'jk', '<Esc>', { desc = "Exit insert mode with 'jk'" })
 
--- vim.keymap.set("n", "<up>", "<C-a>", { desc = "Increment" })
--- vim.keymap.set("n", "<down>", "<C-x>", { desc = "Decrement" })
+-- Window navigation
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = "Move to left window" })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = "Move to bottom window" })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = "Move to top window" })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = "Move to right window" })
 
-vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "next buffer" })
-vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "next buffer" })
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
--- move the cursor to specific widnow
--- vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
--- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
--- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
--- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
-
--- maps for colemak  users
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-vim.keymap.set("n", "<C-n>", "<C-w>j", { desc = "switch window down" })
-vim.keymap.set("n", "<C-e>", "<C-w>k", { desc = "switch window up" })
-vim.keymap.set("n", "<C-i>", "<C-w>l", { desc = "switch window right" })
-
-vim.keymap.set("n", "n", "j", { desc = "left" })
-vim.keymap.set("n", "N", "n", { desc = "left" })
-vim.keymap.set("n", "m", "h", { desc = "down" })
-vim.keymap.set("n", "e", "k", { desc = "up" })
-vim.keymap.set("n", "i", "l", { desc = "right" })
-vim.keymap.set("n", "h", "N", { desc = "switch window right" })
-vim.keymap.set("n", "l", "i", { desc = "switch window right" })
+-- Buffer navigation
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = "Next buffer" })
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = "Previous buffer" })
 
 -- File explorer
-vim.keymap.set("n", "<leader>fe", "<cmd>Oil<cr>", { desc = "Open File explorer(OIL)" })
+vim.keymap.set('n', '<leader>fe', ':Oil<CR>', { desc = "Open file explorer" })
 
--- resize the panes of window
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+-- Resize windows
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { desc = "Increase window height" })
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { desc = "Decrease window height" })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = "Decrease window width" })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = "Increase window width" })
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
-vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
+-- Get project name from folder and use it as executable name
+vim.keymap.set("n", "<leader>cb", ":!mkdir -p build && cd build && cmake .. && make<CR>", { desc = "Build CMake project" })
+vim.keymap.set("n", "<leader>cr", ":!./build/$(basename $(pwd))<CR>", { desc = "Run CMake project" })
+
