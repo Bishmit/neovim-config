@@ -10,7 +10,7 @@ vim.opt.list = false
 
 vim.o.laststatus = 3
 
-vim.g.termguicolor = true
+vim.opt.termguicolors = true 
 
 vim.opt.mouse = "a"
 

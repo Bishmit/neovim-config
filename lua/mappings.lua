@@ -28,4 +28,3 @@ end, { desc = "Build CMake project" })
 vim.keymap.set("n", "<leader>cr", function()
     vim.cmd("!./build/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))
 end, { desc = "Run CMake project" })
-

@@ -19,8 +19,3 @@ require("lazy").setup("plugins")
 require("vim-options")
 require("mappings")
 require('mason').setup()
-
-
--- Keybindings to toggle Nvim-tree and open C++ file
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>c', ':e path/to/your/file.cpp<CR>', { noremap = true, silent = true })
