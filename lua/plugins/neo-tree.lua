@@ -1,5 +1,3 @@
--- ~/.config/nvim/lua/plugins/neo-tree.lua
-
 return {
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -10,7 +8,6 @@ return {
             "MunifTanjim/nui.nvim",
         },
         config = function()
-            -- Neo-tree configuration
             require("neo-tree").setup({
                 default_component_configs = {
                     icon = {
@@ -18,6 +15,24 @@ return {
                         folder_open = "",   -- Icon for open folders
                         folder_empty = "", -- Icon for empty folders
                         default = "",      -- Default icon for files
+                    },
+                    indent = {
+                        with_markers = true,
+                    },
+                },
+                filesystem = {
+                    window = {
+                        position = "left", -- Sidebar stays on the left
+                        width = 30, -- Adjust sidebar width
+                    },
+                    hijack_netrw_behavior = "open_current", -- Ensure files open in the main area
+                },
+                event_handlers = {
+                    {
+                        event = "file_opened",
+                        handler = function(file_path)
+                            -- Do NOT close Neo-tree (leave it open)
+                        end,
                     },
                 },
             })
