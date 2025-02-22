@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.localmapleader = " "
 vim.g.have_nerd_font = true
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
