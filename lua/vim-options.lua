@@ -4,11 +4,13 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 vim.opt.list = false
 
 vim.o.laststatus = 3
+
+vim.opt.autoread = true 
 
 vim.opt.termguicolors = true 
 
