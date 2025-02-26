@@ -1,53 +1,54 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
+-- Indentation settings
+vim.o.expandtab = true  -- Use spaces
+vim.o.tabstop = 4        -- Tab width
+vim.o.softtabstop = 4    -- Edit tab width
+vim.o.shiftwidth = 4      -- Indent width
 
-vim.opt.number = true
-vim.opt.relativenumber = false
+-- Line numbering
+vim.o.number = true       -- Show line numbers
+vim.o.relativenumber = true  -- Absolute numbers
 
-vim.opt.list = false
+-- Miscellaneous settings
+vim.o.list = false        -- Hide list chars
+vim.o.laststatus = 3      -- Always show status
+vim.o.autoread = true     -- Auto-read files
+vim.o.termguicolors = true -- Enable true colors
+vim.o.mouse = "a"        -- Mouse support
+vim.o.showmode = false    -- Hide mode
 
-vim.o.laststatus = 3
-
-vim.opt.autoread = true 
-
-vim.opt.termguicolors = true 
-
-vim.opt.mouse = "a"
-
-vim.opt.showmode = false
-
+-- Clipboard setting
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+	vim.o.clipboard = "unnamedplus"  -- System clipboard
 end)
 
-vim.opt.breakindent = true
+-- Readability settings
+vim.o.breakindent = true  -- Break indent
+vim.o.undofile = true      -- Persistent undo
+vim.o.ignorecase = true    -- Ignore case
+vim.o.smartcase = true     -- Smart case
+vim.o.signcolumn = "yes"   -- Sign column
+vim.o.updatetime = 250      -- Update time
+vim.o.timeoutlen = 300      -- Timeout length
+vim.o.splitright = true     -- Right splits
+vim.o.splitbelow = true     -- Below splits
 
-vim.opt.undofile = true
+-- List characters
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } 
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Incremental command feedback
+vim.o.inccommand = "split"  -- Show command results
 
-vim.opt.signcolumn = "yes"
+-- Cursor line highlight
+vim.wo.cursorline = true    -- Highlight line
 
-vim.opt.updatetime = 250
+-- Scroll offset
+vim.o.scrolloff = 10        -- Scroll offset
 
-vim.opt.timeoutlen = 300
+-- Clear search highlight
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- Clear highlights
 
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+-- Window separator color
+vim.cmd([[highlight WinSeparator guifg=#65ADDC]]) -- Separator color
 
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
-vim.opt.inccommand = "split"
-
-vim.opt.cursorline = true
-
-vim.opt.scrolloff = 10
-
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
-vim.cmd([[highlight WinSeparator guifg=#65ADDC]])
-
-vim.o.pumheight = 15 -- The number of items in the completion window/all popups
+-- Popup menu height
+vim.o.pumheight = 15       -- Popup height

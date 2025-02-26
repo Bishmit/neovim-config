@@ -153,6 +153,15 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete({}),
+			
+				-- Make Tab confirm completion if the menu is open, otherwise insert a tab
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.confirm({ select = true }) -- Confirm completion
+					else
+						fallback() -- Insert a tab normally
+					end
+				end, { "i", "s" }), -- Works in insert & select mode
 			}),
 			sources = {
 				{ name = "luasnip" },
@@ -160,6 +169,7 @@ return {
 				{ name = "path" },
 				-- { name = "buffer" },
 			},
+			
 		})
 
 		-- `/` cmdline setup.
