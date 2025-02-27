@@ -22,7 +22,7 @@ require("lazy").setup("plugins")
 require("vim-options")
 require("mappings")
 require("custom-cmd")
-require('mason').setup()
+require("mason").setup()
 
 
 
